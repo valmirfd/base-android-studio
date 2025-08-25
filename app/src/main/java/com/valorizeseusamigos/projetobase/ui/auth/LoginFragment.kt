@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.valorizeseusamigos.projetobase.R
 import com.valorizeseusamigos.projetobase.databinding.FragmentLoginBinding
+import com.valorizeseusamigos.projetobase.util.showBottomSheet
 
 
 class LoginFragment : Fragment() {
@@ -33,7 +34,7 @@ class LoginFragment : Fragment() {
     private fun initListener(){
 
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
+            validateData()
         }
 
         binding.btnRegister.setOnClickListener {
@@ -43,6 +44,24 @@ class LoginFragment : Fragment() {
         binding.btnRecover.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
         }
+    }
+
+    private fun validateData() {
+        val email = binding.edtEmail.text.toString().trim()
+        val password = binding.edtPassword.text.toString().trim()
+
+        if (email.isNotEmpty()) {
+            if (password.isNotEmpty()) {
+
+                findNavController().navigate(R.id.action_global_homeFragment)
+
+            } else {
+                showBottomSheet(message = getString(R.string.password_empty))
+            }
+        } else {
+            showBottomSheet(message = getString(R.string.email_empty))
+        }
+
     }
 
     override fun onDestroyView() {
