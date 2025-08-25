@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.valorizeseusamigos.projetobase.databinding.FragmentFormTaskBinding
+import com.valorizeseusamigos.projetobase.util.initToolbar
 
 class FormTaskFragment : Fragment() {
     private var _binding: FragmentFormTaskBinding? = null
@@ -19,6 +20,12 @@ class FormTaskFragment : Fragment() {
     ): View {
         _binding = FragmentFormTaskBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initToolbar(binding.toolbar)
     }
 
     override fun onDestroyView() {

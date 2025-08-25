@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.valorizeseusamigos.projetobase.R
 import com.valorizeseusamigos.projetobase.databinding.FragmentLoginBinding
 import com.valorizeseusamigos.projetobase.databinding.FragmentRegisterBinding
+import com.valorizeseusamigos.projetobase.util.initToolbar
 
 
 class RegisterFragment : Fragment() {
@@ -23,6 +24,12 @@ class RegisterFragment : Fragment() {
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initToolbar(binding.toolbar)
     }
 
     override fun onDestroyView() {

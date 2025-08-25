@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.valorizeseusamigos.projetobase.R
 import com.valorizeseusamigos.projetobase.databinding.FragmentRecoverAccountBinding
 import com.valorizeseusamigos.projetobase.databinding.FragmentRegisterBinding
+import com.valorizeseusamigos.projetobase.util.initToolbar
 
 
 class RecoverAccountFragment : Fragment() {
@@ -23,6 +24,12 @@ class RecoverAccountFragment : Fragment() {
     ): View {
         _binding = FragmentRecoverAccountBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initToolbar(binding.toolbar)
     }
 
     override fun onDestroyView() {
